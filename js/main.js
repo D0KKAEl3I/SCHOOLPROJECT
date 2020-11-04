@@ -16,8 +16,15 @@ var openingments = [
 function startApp(){
     //여기서 작업할것
     opening();
-
+    setTimeout(giveMoney, 7500);
 }
+
+function giveMoney(){
+    $('.money').animate({
+        top:'-100px'
+    },1000,'swing')
+    console.log(1)
+} 
 
 function opening(){ 
     var mentCount = 0;
