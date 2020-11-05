@@ -42,7 +42,6 @@ function opening(){
         $('header').append(`<p>${openingments[mentCount].ment}</p>`)
     mentCount++  
     }, 700);
-    console.log($('#gambleZone').offset().top)
     setTimeout(() => {
         $('html,body').animate({ scrollTop: `${$('#gambleZone').offset().top}px` }, 1000)
     }, 6300);
