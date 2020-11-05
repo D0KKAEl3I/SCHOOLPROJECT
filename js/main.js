@@ -23,7 +23,6 @@ function giveMoney(){
     $('.money').animate({
         top:'-100px'
     },1000,'swing')
-    console.log(1)
 } 
 
 function opening(){ 
@@ -43,7 +42,8 @@ function opening(){
         $('header').append(`<p>${openingments[mentCount].ment}</p>`)
     mentCount++  
     }, 700);
+    console.log($('#gambleZone').offset().top)
     setTimeout(() => {
-        $('html,body').animate({ scrollTop: '1080px' }, 1000)
+        $('html,body').animate({ scrollTop: `${$('#gambleZone').offset().top}px` }, 1000)
     }, 6300);
 }

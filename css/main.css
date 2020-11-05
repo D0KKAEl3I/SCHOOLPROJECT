@@ -35,6 +35,11 @@ header>p{
     background-size: cover;
     transform: rotate(90deg);
 }
+#gambleZone{
+    position: relative;
+    top: 1080px; 
+    height: 10000px;
+}
 @keyframes span{
     from{
         transform: scale(4);
