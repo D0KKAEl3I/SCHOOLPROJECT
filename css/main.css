@@ -1,18 +1,18 @@
-body{background-color: rgb(246,246,256);overflow-y: hidden;}
+html{height: 100%;}
+body{background-color: rgb(246,246,256);overflow: hidden;height: 100%;}
 *{margin: 0;padding: 0;}
 header{
     position: relative;
     text-align: center;
-    top: 400px;
+    top: 40%;
     transition: 0.8s ease-in-out;
 } 
 header>p{
     text-shadow: rgba(0, 0, 0, 0.349) 0 0 30px;
     display: inline-block;
     position: relative;
-    font-family: 'Itim', cursive;
     font-family: 'Black Han Sans', sans-serif;
-    font-size: 250px;
+    font-size: 1000%;
     color: black;
     -moz-animation: span 0.5s cubic-bezier(0.2,0.9,0,1);
     -ms-animation: span 0.5s cubic-bezier(0.2,0.9,0,1);
@@ -20,30 +20,59 @@ header>p{
     -webkit-animation: span 0.5s cubic-bezier(0.2,0.9,0,1);
     animation: span 0.5s cubic-bezier(0.2,0.9,0,1);
 }
-#entrance{
-    position: fixed;
-    top:0;
-    left: 25%;
-    z-index: 10;
-}
+
 .money{
-    transition: 0.3s;
-    position: absolute;
-    top:-2000px;
+    position: fixed;
+    top:-1000px;
     width: 712px;
     height: 315px;
     display: inline-block;
-    background-image: url(../images/5만원권.png);
     background-size: cover;
     transform: rotate(90deg);
+    z-index: 10;
+    transition: 0.3s;
 }
+.oman{background-image: url(/images/5만원권.png);}
+
 .money:hover{
     transform:rotate(90deg) scale(1.1);
+    
 }
 #gambleZone{
     position: relative;
     top: 1080px; 
-    height: 10000px;
+    height: 10000px; 
+}
+
+.mentBox{
+    position: fixed;
+    top: 100%;
+    left: 20%;
+    box-sizing: border-box; 
+    height: 120px;
+    background-color: white;
+    width: 60%;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+.ment{
+    font-family: 'Do Hyeon', sans-serif;
+    padding: 20px;
+    font-size: 40px;
+    height: 60px;
+    line-height: 60px;
+}
+.nextBtn{
+    display: none;
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
+    width: 0px;
+    height:0px;
+    border-top:10px solid transparent;
+    border-left: 15px solid black;
+    border-right:10px solid none;
+    border-bottom:10px solid transparent ;
 }
 @keyframes span{
     from{
@@ -53,3 +82,4 @@ header>p{
         transform: scale(1);
     }
 }
+
