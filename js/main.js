@@ -16,24 +16,27 @@ let openingMents = [
 
 //나레이션 대사 목록. 대사 내용과 언제 대사를 칠건지 정해둠.
 let narrationMents = [
-    {ment:"안녕하세요 제 이름은 블랙잭. 이 카지노의 핫한 알바생이죠."
-    ,when:"tutorial"},
-    {ment:"보아하니 당신..돈도 없어보이고..여친한테 차였구나?"
-    ,when:"tutorial"}
+    {ment:"안녕, 내 이름은 블랙잭 이 카지노의 핫한 알바생이야.",when:"tutorial"},
+    {ment:"보아하니 당신 돈하나 없이 여길 왔나본데?",when:"tutorial"},
+    {ment:"칩 몇개 쥐어줄테니 돈좀 따와봐. 나 20% 떼주기다?",when:"tutorial"},
+
 ]
 
 function startApp(){
     //여기서 작업할것
     // opening();
-    setInterval(function(){console.log(1)},10);
+    narration('tutorial');
     // setTimeout(giveMoney, 7500);
 }
 
-function narration(){
-    let ments = narrationMents.filter(x=>{if(x.when == 'tutorial') return x;})
+function narration(timing){
+    let ments = narrationMents.filter(x=>{if(x.when == `${timing}`) return x;})
     let mentCount = 0
-    console.log(ments.length)
-    
+
+    //블랙잭 등장
+    $('#blackjack').animate({
+        left : '100px'
+    }, 600, 'linear')
     //대사창 보여줌
     $('.mentBox').animate({
        top : '80%'
@@ -62,12 +65,22 @@ function narration(){
         $('.nextBtn').css({transform : 'rotate(90deg)'})
         $('.nextBtn').show()
         $('.mentBox').on('click',function(){
+            //대사창 내려감
             $('.mentBox').animate({
                 top : '100%'
             },300,'swing')
             $('.mentBox').off('click')
-            setTimeout(function(){$('.nextBtn').css({transform : ''})},300)
+            //블랙잭 퇴장
+            $('#blackjack').animate({
+            left : '-40%'
+            }, 700, 'linear')
+            //무시하셈
+            setTimeout(function(){
+                $('.nextBtn').css({transform : ''})
+
+            },300)
         })
+        
     }
     function toNext(){
         $('.nextBtn').show()
@@ -82,17 +95,16 @@ function narration(){
     // document.getElementsByClassName('mentBox')[0].addEventListener('click', )
 }
 
-async function giveMoney(){
-    narration()
-    $('.money').animate({
-        top:'-100px'
-    },1000,'swing')
-    .on('click',function(){
-        $('.money').animate({
-            top:'200%'
-        },1000,'swing')
-    })
+
+let chips = 0;
+function giveChip(){
+    $('#chips').append('<li class="chip"></li>')
+    chips++
 } 
+function useChip(){
+    $('.chip')[0].remove();
+    chips--
+}
 
 function opening(){ 
     let mentCount = 0;
@@ -115,4 +127,3 @@ function opening(){
         $('html,body').animate({ scrollTop: `${$('#gambleZone').offset().top}px` }, 1000)
     }, 6300);
 }
-

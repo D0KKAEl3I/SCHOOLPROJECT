@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/main.css">
-    <style>/* 폰트들 */
-        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');</style>
+    <style>
+        /* 폰트들 */
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap');
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
+
 <body>
     <header>
     </header>
     <article id="gambleZone">
         <!-- 슬롯머신 -->
-        <div id="777">
-            <div class="roll"></div>
+        <div id="slot-machine" class="game">
+            <ul class="roll">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
             <div class="money-slot"></div>
         </div>
-        
+
         <!-- 야바위 -->
-        <div id="trickery">
-            
+        <div id="trickery" class="game">
+            <div class="cup"></div>
+            <div class="cup"></div>
+            <div class="cup"></div>
         </div>
     </article>
+    <img src="./images/blackjack.png" alt="" id="blackjack">
     <div class="mentBox">
         <p class="ment"></p>
         <div class="nextBtn"></div>
     </div>
-    <h1 id="wallet"><p id="  "></p></h1>
+    <ul id="chips">
+    </ul>
     <div class="money oman"></div>
     <script src="./js/main.js"></script>
+    <script src="./js/slotMachine.js"></script>
+    <script src="./js/trickery.js"></script>
 </body>
+
 </html>
