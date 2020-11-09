@@ -16,23 +16,24 @@ let openingMents = [
 
 //나레이션 대사 목록. 대사 내용과 언제 대사를 칠건지 정해둠.
 let narrationMents = [
-    {ment:"안녕, 내 이름은 블랙잭 이 카지노의 핫한 알바생이야.",when:"tutorial"},
-    {ment:"보아하니 당신 돈하나 없이 여길 왔나본데?",when:"tutorial"},
-    {ment:"칩 몇개 쥐어줄테니 돈좀 따와봐. 나 20% 떼주기다?",when:"tutorial"},
-
+    {ment:"안녕하세요. 처음 오신 손님이신가보네요?",when:"tutorial"},
+    {ment:"제 이름은 블랙잭, 이 카지노의 아주 핫한 딜러죠.",when:"tutorial"},
+    {ment:"보아하니..배팅할 돈은 없어보이시는데..",when:"tutorial"},
+    {ment:"에잇, 처음오신분이니 칩 세개만 드릴테니까 한번 해봐요.",when:"tutorial"},
+    {ment:"초심자에겐 이거만큼 따기 쉬운게 없죠. 슬롯머신이에요.",when:"slotMachine"},
+    {ment:"칩하나 넣고 돌려봐요.",when:"slotMachine"},
+ 
 ]
 
 function startApp(){
     //여기서 작업할것
-    // opening();
-    narration('tutorial');
-    // setTimeout(giveMoney, 7500);
+    opening();
 }
 
 function narration(timing){
-    let ments = narrationMents.filter(x=>{if(x.when == `${timing}`) return x;})
+    let ments = narrationMents.filter(x=>{if(x.when == timing) return x;})
+    $('.ment').empty()
     let mentCount = 0
-
     //블랙잭 등장
     $('#blackjack').animate({
         left : '100px'
@@ -45,7 +46,7 @@ function narration(timing){
     let i = 0;
     let speed = 80
     function type() { 
-        let ment = ments[mentCount].ment 
+        let ment = ments[mentCount].ment
         if (i < ment.length) {
           $('.ment').append(ment.charAt(i))
           i++;
@@ -57,6 +58,18 @@ function narration(timing){
                 toNext()
             } else {
                 closeNar();
+                if(timing=='tutorial'){
+                    document.getElementById('gambleZone').style.backgroundColor='black'
+                    for(let j = 0; j < 3; j++){
+                        giveChip()
+                    }
+                    setTimeout(() => {
+                        narration('slotMachine')
+                    }, 2000);
+                }
+                else if(timing=='slotMachine'){
+                    setSlotMachine()
+                }
             }
         }
     }
@@ -91,8 +104,6 @@ function narration(timing){
             $('.mentBox').off('click')
         })
     }
-    // setTimeout(toNext, ments[mentCount].ment.length*80+1000);
-    // document.getElementsByClassName('mentBox')[0].addEventListener('click', )
 }
 
 
@@ -125,5 +136,8 @@ function opening(){
     }, 700);
     setTimeout(() => {
         $('html,body').animate({ scrollTop: `${$('#gambleZone').offset().top}px` }, 1000)
+        setTimeout(function(){
+            narration('tutorial')
+        },1200)
     }, 6300);
 }

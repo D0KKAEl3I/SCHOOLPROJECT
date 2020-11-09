@@ -42,11 +42,15 @@ header>p{
 }
 #gambleZone{
     position: relative;
-    top: 1080px; 
-    height: auto; 
+    top: 100%; 
+    height: 200%; 
+    background-color: rgb(246,246,256);
+    overflow-y: hidden;
+    transition: 0.5s;
 }
-.game{width:100%; height: 1080px;background-color: black;}
+.game{width:100%; height: 1080px;display: none;}
 
+#slot-machine{position: relative;}
 .roll{
     margin: 0 auto;
     top: 340px;
@@ -62,17 +66,28 @@ header>p{
     background-size: cover;
     background-color: aliceblue
 }
+.money-slot{
+    width: 200px;
+    height: 60px;
+    background-color: gray;
+    position: absolute;
+    right: 100px;
+    bottom: 180px;
+}
 
-
+.cup{
+    background-image: url(../images/컵.png);
+    width: 200px;
+}
  
 
-
+ 
 
 
 #chips{
     position: fixed;
     bottom: 20px;
-    right: 100%;
+    right: 20px;
     width: auto;
     height: 80px;
     transition: 0.2s ease-out;
