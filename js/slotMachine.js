@@ -4,7 +4,7 @@ function spin(){
     if(chips < 1){narration('alert'); giveChip(); return;}//칩이 0개면 한개 주면서 대사치고 함수 생략
     useChip();//칩 소모
     $('.money-slot').off();//칩 투입 잠시 비활성
-    if(gambleCount >= 20){//도박 20회 진행했을시
+    if(gambleCount >= 6){//도박 20회 진행했을시
         narration('stop!')//블랙잭의 나쁜대사.
         status='stop'//상태 변경
         return;
