@@ -1,11 +1,11 @@
 window.onload = function(){
     $('html,body').animate({ scrollTop: 0 })
-    startApp();
+    opening();
+    
 }
 
 //오프닝 대사 목록. 추가할경우 순서대로 넣어주세요
 let openingMents = [
-    {ment : "서울"},
     {ment : "디지텍"},
     {ment : "카지노에"},
     {ment : "오신 것을"},
@@ -19,16 +19,11 @@ let narrationMents = [
     {ment:"안녕하세요. 처음 오신 손님이신가보네요?",when:"tutorial"},
     {ment:"제 이름은 블랙잭, 이 카지노의 아주 핫한 딜러죠.",when:"tutorial"},
     {ment:"보아하니..배팅할 돈은 없어보이시는데..",when:"tutorial"},
-    {ment:"에잇, 처음오신분이니 칩 세개만 드릴테니까 한번 해봐요.",when:"tutorial"},
     {ment:"초심자에겐 이거만큼 따기 쉬운게 없죠. 슬롯머신이에요.",when:"slotMachine"},
+    {ment:"에잇, 처음오신분이니 칩 세개만 드릴테니까 한번 해봐요. ",when:"tutorial"},
     {ment:"칩하나 넣고 돌려봐요.",when:"slotMachine"},
  
 ]
-
-function startApp(){
-    //여기서 작업할것
-    opening();
-}
 
 function narration(timing){
     let ments = narrationMents.filter(x=>{if(x.when == timing) return x;})
@@ -89,8 +84,7 @@ function narration(timing){
             }, 700, 'linear')
             //무시하셈
             setTimeout(function(){
-                $('.nextBtn').css({transform : ''})
-
+                $('.nextBtn').css({transform : ''}).hide()
             },300)
         })
         
