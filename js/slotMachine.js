@@ -1,6 +1,8 @@
 let newbieLuck = 0;
 
 function spin(){
+    if(chips < 1){chipAlert(); return;}
+    useChip();
     $('.money-slot').off();
     let nums = [0,0,0]
     
@@ -37,7 +39,7 @@ function spin(){
         else console.log('again')
         $('.money-slot').on('click',spin)
     }, 1000);
-
+    gambleCount++;
 }
 function setSlotMachine(){
     $('.roll li').append(`<img src="./images/roll1.png">`)

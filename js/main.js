@@ -25,14 +25,24 @@ let narrationMents = [
     {ment:"자, 이쪽으로 오시죠. 슬롯머신입니다.",when:"slotMachine"},
     {ment:"초심자에겐 이거만큼 얻기 쉬운게 없죠.",when:"slotMachine"},
     {ment:"칩하나 넣고 돌려봐요.",when:"slotMachine"},
- 
+    {ment:"칩이 부족하시네요. 하나 더 드릴게요.",when:"alert"},
+    
 ]
 
+//현재 진행상태
 let status = 'tutorial'
 
+//도박 시행 횟수 기록
+let gambleCount = 0; 
+
+//나레이션 함수, 파라미터는 문자열.
 function narration(timing){
+
+    //대사 목록에서 when 키의 값이 파라미터로 받은 값과 같은 대사들을 가져옴
     let ments = narrationMents.filter(x=>{if(x.when == timing) return x;})
     $('.ment').empty()
+
+    //가져온 멘트들 순서 확인 변수
     let mentCount = 0
     //블랙잭 등장
     $('#blackjack').animate({
@@ -42,35 +52,51 @@ function narration(timing){
     $('.mentBox').animate({
        top : '80%'
     }, 300, 'swing')
-    //대사 출력
+
+    //대사 속 글자 수 확인 변수
     let i = 0;
+
+    //글자 하나하나 타이핑되는 간격
     let speed = 80
+
+    //대사 출력 함수
     function type() { 
+        //사용할 멘트 변수에 순서에 맞는 멘트를 가져와 할당
         let ment = ments[mentCount].ment
+
+        //가져온 멘트의 길이까지 안닿았을 경우 글자 타이핑
         if (i < ment.length) {
           $('.ment').append(ment.charAt(i))
-          i++;
-          setTimeout(type, speed);
-        } else {
+          i++;//타이핑한 글자 수 증가
+          setTimeout(type, speed);//한 글자 타이핑 후 타이핑 함수 재실행
+        } else {//멘트가 끝까지 쳐졌을 경우 
+            //타이핑된 글자 수 초기화
             i = 0
-            if(mentCount < ments.length-1){
-                mentCount++;
-                toNext()
-            } else {
-                closeNar();
-                if(timing=='tutorial'){
+            if(mentCount < ments.length-1){//마지막 멘트가 아니라면
+                mentCount++;//출력된 멘트 갯수 증가
+                toNext()//다음으로. 함수 실행
+            } else {//마지막 멘트라면
+                if(status="tutorial"){//튜토리얼이었다면
+                    //배경색 변경, 분위기 전환
                     document.getElementById('gambleZone').style.backgroundColor='black'
-                    for(let j = 0; j < 3; j++){
+                    for(let j = 0; j < 3; j++){//칩을 세개 줌
                         giveChip()
                     }
+                    status='slotMachine'//순서 상태를 슬롯머신으로 변경
                 }
+                closeNar();//닫기 함수 실행.(아직 안닫힘)
             }
-        }
+        } 
     }
-    setTimeout(type, 800);
+    setTimeout(type, 800);//전반 애니메이션이 다 끝나면 타이핑 애니메이션 실행
+    // 나레이션 끝남 함수
     function closeNar(){
+        //원래 우측을 향하던 화살표 아이콘을 아래로 향하게 함
         $('.nextBtn').css({transform : 'rotate(90deg)'})
+        //화살표 아이콘 보여줌
         $('.nextBtn').show()
+
+        // 해당 상태에서 클릭시
         $('.mentBox').on('click',function(){
             //대사창 내려감
             $('.mentBox').animate({
@@ -81,20 +107,26 @@ function narration(timing){
             $('#blackjack').animate({
             left : '-40%'
             }, 700, 'linear')
-            //무시하셈
+            //화살표 방향 다시 오른쪽으로 만들고 숨김
             setTimeout(function(){
                 $('.nextBtn').css({transform : ''}).hide()
             },300)
         })
-        
+
+        if(status=='slotMachine'){//만약 상태가 슬롯머신이라면
+            setTimeout(() => {//1.5초후 슬롯머신관련 대사 나레이션 시작
+               narration('slotMachine')
+               status='ing' //진행중으로 상태 바꿈
+            }, 1500);
+        }
     }
-    function toNext(){
-        $('.nextBtn').show()
-        $('.mentBox').on('click',function(){
-            $('.nextBtn').hide();
-            $('.ment').empty();
-            type()
-            $('.mentBox').off('click')
+    function toNext(){//다음 대사로. 함수
+        $('.nextBtn').show()//화살표 아이콘 보여줌
+        $('.mentBox').on('click',function(){ //대사창에서 클릭 발생시
+            $('.nextBtn').hide();//화살표 숨기고
+            $('.ment').empty();//대사창 속 멘트공간 비우고
+            type()//다음 대사 시작
+            $('.mentBox').off('click')//클릭이벤트 비활성
         })
     }
 }
@@ -108,6 +140,9 @@ function giveChip(){
 function useChip(){
     $('.chip')[0].remove();
     chips--
+}
+function chipAlert(){
+    narration('alert');
 }
 
 function opening(){ 
