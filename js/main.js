@@ -26,7 +26,15 @@ let narrationMents = [
     {ment:"초심자에겐 이거만큼 얻기 쉬운게 없죠.",when:"slotMachine"},
     {ment:"칩하나 넣고 돌려봐요.",when:"slotMachine"},
     {ment:"칩이 부족하시네요. 하나 더 드릴게요.",when:"alert"},
-    
+    {ment:"오? 처음치곤 잘나왔는걸요? 한번 더돌려봐요.",when:"newbieLuck1"},
+    {ment:"와우? 두번만에 잭팟이요?? 오늘 운 엄청 좋으신가보네~ 계속해봐요.",when:"newbieLuck2"},
+    {ment:"으음...다시 해보죠",when:"again"},
+    {ment:"이걸론 부족하죠..다시 해봐요",when:"lucky"},
+    {ment:"잭팟! 너무 좋아요!",when:"jackpot"}, 
+    {ment:"이런이런..시간이 벌써 이렇게나..",when:"stop!"}, 
+    {ment:"얼마나 갖고있어요? 빌려준건 열개가 넘어가는데..",when:"stop!"}, 
+    {ment:"못 갚으시겠다고요? 그게지금 말이나 돼요?!",when:"stop!"}, 
+    {ment:"야이 @#!$아! 당장 돈으로 갚지 않으면 !#$!@#@$@#$....",when:"stop!"}, 
 ]
 
 //현재 진행상태
@@ -76,13 +84,14 @@ function narration(timing){
                 mentCount++;//출력된 멘트 갯수 증가
                 toNext()//다음으로. 함수 실행
             } else {//마지막 멘트라면
-                if(status="tutorial"){//튜토리얼이었다면
+                if(status=="tutorial"){//튜토리얼이었다면
+                    status='slotMachine'//순서 상태를 슬롯머신으로 변경
                     //배경색 변경, 분위기 전환
                     document.getElementById('gambleZone').style.backgroundColor='black'
                     for(let j = 0; j < 3; j++){//칩을 세개 줌
                         giveChip()
                     }
-                    status='slotMachine'//순서 상태를 슬롯머신으로 변경
+                    console.log(status)
                 }
                 closeNar();//닫기 함수 실행.(아직 안닫힘)
             }
@@ -115,9 +124,12 @@ function narration(timing){
 
         if(status=='slotMachine'){//만약 상태가 슬롯머신이라면
             setTimeout(() => {//1.5초후 슬롯머신관련 대사 나레이션 시작
+                status='ing' //진행중으로 상태 바꿈
                narration('slotMachine')
-               status='ing' //진행중으로 상태 바꿈
+               setSlotMachine();
             }, 1500);
+        } else if(status =='stop'){
+            ending();
         }
     }
     function toNext(){//다음 대사로. 함수
@@ -141,10 +153,8 @@ function useChip(){
     $('.chip')[0].remove();
     chips--
 }
-function chipAlert(){
-    narration('alert');
-}
 
+//오프닝부분
 function opening(){ 
     let mentCount = 0;
     let saying = setInterval(() => {
