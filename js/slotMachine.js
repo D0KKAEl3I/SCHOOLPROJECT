@@ -27,21 +27,21 @@ function spin(){
     setTimeout(() => { //1초후 실행
         clearInterval(interval)//반복 중단
         if(newbieLuck == 0){ //초짜의 행운이 0이면 
-            for(let c = 1; i <= 2; c++){//앞에 두개는 동일하게
-                $(`.roll li:nth-child(${c})`).empty();
-                $(`.roll li:nth-child(${c})`).append(`<img src="./images/roll2.png">`);
+            for(let i = 1; i <= 2; i++){//앞에 두개는 동일하게
+                $(`.roll li:nth-child(${i})`).empty();
+                $(`.roll li:nth-child(${i})`).append(`<img src="./images/roll2.png">`);
             }
             //마지막 한개만 다르게, 희망주는거
-            $(`.roll li:nth-child(${3})`).empty();
-            $(`.roll li:nth-child(${3})`).append(`<img src="./images/roll3.png">`);
+            $(`.roll li:nth-child(3)`).empty();
+            $(`.roll li:nth-child(3)`).append(`<img src="./images/roll3.png">`);
             newbieLuck++;//뉴비의 운을 1로 만듦
             narration('newbieLuck1')//흥미 돋구는 대사 침
             $('.money-slot').on('click',spin)//비활성화돼있던 투입구 클릭 이벤트 다시 할당
             return;
         }else if(newbieLuck == 1){//초짜의 행운이 1이면
-            for(let u = 1; i <= 3; u++){//세개 다 다이아몬드로 만들어서 대박터진것처럼 해줌
-                $(`.roll li:nth-child(${u})`).empty();
-                $(`.roll li:nth-child(${u})`).append(`<img src="./images/roll1.png">`);
+            for(let i = 1; i <= 3; i++){//세개 다 다이아몬드로 만들어서 대박터진것처럼 해줌
+                $(`.roll li:nth-child(${i})`).empty();
+                $(`.roll li:nth-child(${i})`).append(`<img src="./images/roll1.png">`);
             }
             newbieLuck++;//뉴비의 운을 2로만듦, 효력 잃음
             narration('newbieLuck2')//칭찬으로 흥미 더 유발하는 대사침
