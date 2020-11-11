@@ -1,7 +1,6 @@
 window.onload = function(){
     $('html,body').animate({ scrollTop: 0 })
-    // opening();
-    ending()
+    opening();
 }
 
 //오프닝 대사 목록. 추가할경우 순서대로 넣어주세요
@@ -34,9 +33,11 @@ let narrationMents = [
     {ment:"이런이런..한 끗 차이로 잭팟을 못터트리다니. 아쉬운걸요?",when:"lucky"},
     {ment:"잭팟! 너무 좋아요! 이 기세로 계속 가보죠!",when:"jackpot"}, 
     {ment:"이런이런..시간이 벌써 이렇게나 흘렀군요.",when:"stop!"}, 
-    {ment:"얼마나 얻으셨어요? 뭐요..? 하나도 없다고요?",when:"stop!"}, 
+    {ment:"얼마나 얻으셨어요?",when:"stop!"}, 
+    {ment:"뭐요..? 하나도 없다고요?",when:"stop!"}, 
     {ment:"빌려드린 게 몇 갠데 그런 말이 나와요 지금?",when:"stop!"}, 
-    {ment:"어떻게든 갚아요! 그게 쉽게 얻어지는것 같아요?",when:"stop!"}, 
+    {ment:"어떻게든 갚아요!",when:"stop!"}, 
+    {ment:"그게 쉽게 얻어지는것 같아요?",when:"stop!"}, 
     {ment:"못 갚으시겠다고요? 그게지금 말이나 돼요?!",when:"stop!"}, 
     {ment:"이 @#!$아! 당장 갚지 않으면 !#$!@#@$@#$....",when:"stop!"}, 
 ]
@@ -137,7 +138,7 @@ function narration(timing){
           $('.ment').append(ment.charAt(i))
           i++;//타이핑한 글자 수 증가
           setTimeout(type, speed);//한 글자 타이핑 후 타이핑 함수 재실행
-        } else {//멘트가 끝까지 쳐졌을 경우 
+        } else {//멘트가 끝까지 쳐졌을 경우  
             //타이핑된 글자 수 초기화
             i = 0
             if(mentCount < ments.length-1){//마지막 멘트가 아니라면
@@ -186,8 +187,21 @@ function narration(timing){
                narration('slotMachine')
                setSlotMachine();
             }, 1500);
+            } else if(status =='alert'){
+                giveChip()
             } else if(status =='stop'){
-                ending();
+                $('#slot-machine').animate({
+                    opacity : '0'
+                },500)
+                $('#chips').animate({
+                    opacity : '0'
+                },500)
+                $('#blackjack').animate({
+                    opacity : '0'
+                },500)
+                setTimeout(() => {
+                    ending();
+                }, 700);
             }
         })
 
