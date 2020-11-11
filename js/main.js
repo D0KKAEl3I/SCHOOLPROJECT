@@ -1,7 +1,6 @@
 window.onload = function(){
     $('html,body').animate({ scrollTop: 0 })
-    // opening();
-    ending();
+    opening();
 }
 
 //오프닝 대사 목록. 추가할경우 순서대로 넣어주세요
