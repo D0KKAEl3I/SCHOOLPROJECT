@@ -13,11 +13,15 @@ header>p{text-shadow: rgba(0, 0, 0, 0.349) 0 0 30px; display: inline-block; posi
 .roll img{width:100%; margin-top: 50px;}
 .money-slot{width: 200px; height: 60px; background-color: gray; position: absolute; right: 100px; bottom: 180px;}
 
-#information{width: 100%; height: 100%; display: flex; justify-content: space-around;}
-#information div{position: relative; background-color: white; margin-top: 100%; width: 550px; border-radius: 8px; box-shadow: gray 0 0 20px; transition: 0.5s; height: 100%;}
+#information{width: 100%; height: 100%; display: flex; justify-content: space-around; position: relative; transition: 0.8s;}
+.info-block{text-align:center;position: relative; background-color: white; margin-top: 100%; width: 550px; border-radius: 8px; box-shadow: gray 0 0 20px; transition: 0.5s; height: 100%;}
 .info-block h2{padding: 20px;font-size: 4vh; text-align: center;}
-.info-block p{font-size: 3vh; padding: 0 35px 35px;}
+.info-block p{text-align: left; font-size: 3vh; padding: 0 35px 35px;}
+.loaded{width:80px; right: 100px; bottom: 20px; position: absolute; 
+    animation:sign 1s infinite ease-in-out; cursor: pointer;}
 
+#ad{position:absolute;top: 50%;margin-top: -303px;left: 200%;margin-left: -589.5px; height: auto;}
+.ending{color: black;}
 #chips{position: fixed; bottom: 20px; right: 20px; width: auto; height: 80px; transition: 0.2s ease-out;}
 .chip{margin: 0 5px; position: relative; background-color: none; background-image: url(/images/칩.png); background-size: cover; width: 70px; height: 70px; border-radius: 35px; float: left;}
 #blackjack{height: 70%; position: fixed; bottom: 0; left: -40%;}
@@ -32,4 +36,8 @@ header>p{text-shadow: rgba(0, 0, 0, 0.349) 0 0 30px; display: inline-block; posi
         transform: scale(1);
     }
 }
-
+@keyframes sign{   
+    0%{right: 100px;}
+    50%{right: 85px;}
+    100%{right: 100px;}
+}
