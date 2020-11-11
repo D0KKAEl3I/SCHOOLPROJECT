@@ -1,6 +1,7 @@
 window.onload = function(){
     $('html,body').animate({ scrollTop: 0 })
-    opening();
+    // opening();
+    ending();
 }
 
 //오프닝 대사 목록. 추가할경우 순서대로 넣어주세요
@@ -242,4 +243,14 @@ function opening(){
 
 function ending(){
     $('html,body').animate({ scrollTop: `${$('#information').offset().top}px` }, 1000)
+    setTimeout(() => {
+        for(var i = 0; i < 3; i++){
+            let list = document.getElementsByClassName('info-block')[i]
+            console.log(list)
+            setTimeout(() => {
+                list.style.marginTop = '9%'
+            }, 600*i);
+            
+        }
+    }, 1100);
 }

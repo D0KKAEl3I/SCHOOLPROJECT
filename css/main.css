@@ -1,6 +1,6 @@
 html{height: 100%;}
 body{background-color: rgb(246,246,256); 
-    /* overflow: hidden;  */
+    overflow: hidden; 
     height: 100%;}
 *{margin: 0;padding: 0;list-style: none;outline: none;text-decoration: none;}
 header{position: relative; text-align: center; height:100%; transition: 0.8s ease-in-out;} 
@@ -21,13 +21,16 @@ header>p{text-shadow: rgba(0, 0, 0, 0.349) 0 0 30px; display: inline-block; posi
 }
 #information div{
     position: relative;
-    top: 50%;
-    margin-top: -125px;
-    width: 350px;
-    height: 250px;
-    border-radius: 5px;
+    background-color: white;
+    margin-top: 100%;
+    width: 550px;
+    border-radius: 8px;
     box-shadow: gray 0 0 20px;
+    transition: 0.5s;
+    height: 100%;
 }
+.info-block h2{padding: 20px;font-size: 4vh; text-align: center;}
+.info-block p{font-size: 3vh; padding: 0 35px 35px;}
 
 #chips{position: fixed; bottom: 20px; right: 20px; width: auto; height: 80px; transition: 0.2s ease-out;}
 .chip{margin: 0 5px; position: relative; background-color: none; background-image: url(/images/칩.png); background-size: cover; width: 70px; height: 70px; border-radius: 35px; float: left;}
