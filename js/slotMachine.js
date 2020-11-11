@@ -52,9 +52,9 @@ function spin(){
             if(nums[0] == nums[1]){cnt++}
             if(nums[0] == nums[2]){cnt++}  //각 슬롯별로 같은지 확인
             if(nums[1] == nums[2]){cnt++}
-            if(cnt == 3){narration('jackpot'); giveChip();}//셋이 다 같은경우 cnt는 3이 나오므로 잭팟 대사 출력 후 토큰 한개 지급
-            else if(cnt == 1)narration('lucky') //두개만 같은경우 cnt는 1이 나오므로 아쉬우니 다시 해보라는 대사를 침
-            else narration('again') //하나도 안같을 경우 걍 다시하라고 대사침.
+            if(cnt == 3){gambleNarration('jackpot'); giveChip();}//셋이 다 같은경우 cnt는 3이 나오므로 잭팟 대사 출력 후 토큰 한개 지급
+            else if(cnt == 1)gambleNarration('lucky') //두개만 같은경우 cnt는 1이 나오므로 아쉬우니 다시 해보라는 대사를 침
+            else gambleNarration('again') //하나도 안같을 경우 걍 다시하라고 대사침.
             $('.money-slot').on('click',spin)//비활성하돼있던 투입구 클릭 이벤트 다시 할당
         }
     }, 1000);

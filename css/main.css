@@ -1,16 +1,34 @@
 html{height: 100%;}
-body{background-color: rgb(246,246,256); overflow: hidden; height: 100%;}
+body{background-color: rgb(246,246,256); 
+    /* overflow: hidden;  */
+    height: 100%;}
 *{margin: 0;padding: 0;list-style: none;outline: none;text-decoration: none;}
-header{position: relative; text-align: center; top: 40%; transition: 0.8s ease-in-out;} 
-header>p{text-shadow: rgba(0, 0, 0, 0.349) 0 0 30px; display: inline-block; position: relative; font-family: 'Black Han Sans', sans-serif; font-size: 1000%; color: black; -moz-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); -ms-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); -o-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); -webkit-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); animation: span 0.5s cubic-bezier(0.2,0.9,0,1);}
-#gambleZone{position: relative; top: 100%;  height: 200%;  background-color: rgb(246,246,256); overflow-y: hidden; transition: 0.5s;}
-.game{width:100%; height: 50%;display: none;}
-#slot-machine{position: relative;}
+header{position: relative; text-align: center; height:100%; transition: 0.8s ease-in-out;} 
+header>p{text-shadow: rgba(0, 0, 0, 0.349) 0 0 30px; display: inline-block; position: relative; font-family: 'Black Han Sans', sans-serif; font-size: 1000%; color: black; -moz-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); -ms-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); -o-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); -webkit-animation: span 0.5s cubic-bezier(0.2,0.9,0,1); top:40vh;animation: span 0.5s cubic-bezier(0.2,0.9,0,1);}
+#gambleZone{position: relative; height: 100%;  background-color: rgb(246,246,256); overflow-y: hidden; transition: 0.5s;}
+.game{width:100%; height: 100%;}
+#slot-machine{position: relative;display: none;}
 .roll{margin: -200px 0 0 -450px; top: 50%; left:50%; position: absolute; height: 400px; width: 900px;}
 .roll li{float: left; width: 300px; height: 100%; background-size: cover; background-color: aliceblue}
 .roll img{width:100%; margin-top: 50px;}
 .money-slot{width: 200px; height: 60px; background-color: gray; position: absolute; right: 100px; bottom: 180px;}
-.cup{background-image: url(../images/컵.png); width: 200px;}
+
+#information{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+#information div{
+    position: relative;
+    top: 50%;
+    margin-top: -125px;
+    width: 350px;
+    height: 250px;
+    border-radius: 5px;
+    box-shadow: gray 0 0 20px;
+}
+
 #chips{position: fixed; bottom: 20px; right: 20px; width: auto; height: 80px; transition: 0.2s ease-out;}
 .chip{margin: 0 5px; position: relative; background-color: none; background-image: url(/images/칩.png); background-size: cover; width: 70px; height: 70px; border-radius: 35px; float: left;}
 #blackjack{height: 70%; position: fixed; bottom: 0; left: -40%;}
